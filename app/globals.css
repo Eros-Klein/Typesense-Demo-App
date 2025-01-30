@@ -3,14 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ebf4ee;
+  --foreground: #112217;
+  --primary: #326243;
+  --secondary: #9acbc4;
+  --accent: #4c8d94;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a130d;
+    --foreground: #ddeee3;
+    --primary: #9ccdae;
+    --secondary: #34665f;
+    --accent: #6cadb4;
   }
 }
 
