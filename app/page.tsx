@@ -1,15 +1,10 @@
-import { searchClient } from "algoliasearch";
-import { Hits, InstantSearch, SearchBox } from "react-instantsearch";
+import TypesenseSearch from "@/components/TypesenseSearch";
 
 export default function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <InstantSearch searchClient={searchClient("", "")} indexName="bestbuy">
-        <SearchBox />
-        <Hits />
-      </InstantSearch>
-
+      <TypesenseSearch />
     </div>
-  );
+  )
 }
