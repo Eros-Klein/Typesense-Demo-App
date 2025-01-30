@@ -10,6 +10,7 @@ export default async function TypesenseSearch() {
   }
 
   const books = (await TypesenseInstance.searchData('books', searchParams)).hits!;
+  const results = books.forEach((data) => { });
   console.log(books)
 
   return (

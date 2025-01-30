@@ -15,7 +15,7 @@ const client = new Typesense.Client({
 
 const bookSchema: CollectionCreateSchema = {
   name: "books",
-  'fields': [
+  fields: [
     { 'name': 'title', 'type': 'string' },
     { 'name': 'authors', 'type': 'string[]', 'facet': true },
 
@@ -23,7 +23,7 @@ const bookSchema: CollectionCreateSchema = {
     { 'name': 'ratings_count', 'type': 'int32' },
     { 'name': 'average_rating', 'type': 'float' }
   ],
-  'default_sorting_field': 'ratings_count'
+  default_sorting_field: 'ratings_count'
 }
 
 const books = await readFile(process.cwd() + '/app/books.jsonl', 'utf8')

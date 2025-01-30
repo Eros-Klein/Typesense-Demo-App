@@ -1,6 +1,6 @@
 # Typesense Demo
 
-#### __A Simple React Demo using Typesense-Search-Database__
+- __A Simple React Demo using Typesense-Search-Database__
 
 ## Requirements
 
@@ -19,8 +19,16 @@ docker run -p 8108:8108 \
             --enable-cors
 ```
 
+- Update values of .env.template and save it to .env (Update api_key to the one you provided in the docker run script above)
+
 - Install dependencies
 
 ```sh
 npm install
+```
+
+- Run via npm start or dev for development
+
+```sh
+npm run start
 ```
