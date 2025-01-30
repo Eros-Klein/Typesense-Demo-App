@@ -26,7 +26,7 @@ const bookSchema: CollectionCreateSchema = {
   default_sorting_field: 'ratings_count'
 }
 
-const books = await readFile(process.cwd() + '/app/books.jsonl', 'utf8')
+const books = await readFile(process.cwd() + '/data/books.jsonl', 'utf8')
 
 createCollection(bookSchema)
 importData(books)
