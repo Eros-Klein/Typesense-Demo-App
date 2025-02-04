@@ -5,7 +5,7 @@ import BookElement from "./BookElement";
 
 export default function TypesenseSearchResult({ books }: { books: Book[] }) {
   return (
-    <div className="flex justify-evenly flex-wrap gap-y-3 items-stretch py-10 overflow-y-auto max-h-[100%]">
+    <div className="flex justify-evenly flex-wrap gap-y-3 items-stretch py-10 min-w-full overflow-y-auto max-h-[100%]">
       {books.map((book) => (BookElement({ book: book })))}
     </div >
   )

@@ -22,20 +22,20 @@ export default function EntityContent({ entity, callback }: { entity?: Entity, c
 
     param.forEach(element => {
       if (element.type === "number") {
-        jsonStrings.push(`"${element.key}": ${element.val}`)
+        jsonStrings.push(` "${element.key}": ${element.val}`)
       }
       else if (element.type === "string") {
-        jsonStrings.push(`"${element.key}": "${element.val}"`)
+        jsonStrings.push(` "${element.key}": "${element.val}"`)
       }
       else {
-        const substring = (element.val as string).split(";").map(v => `"${v}"`).join(",")
+        const substring = (element.val as string).split(";").map(v => `"${v}"`).join(", ")
 
-        jsonStrings.push(`"${element.key}": [${substring}]`)
+        jsonStrings.push(` "${element.key}": [${substring}]`)
       }
     });
 
     jsonString += jsonStrings.join(",")
-    jsonString += "}"
+    jsonString += " }"
 
     return jsonString;
   }
@@ -56,7 +56,7 @@ export default function EntityContent({ entity, callback }: { entity?: Entity, c
   }
 
   return (
-    <div className="w-2/3 flex flex-col gap-2 p-2">
+    <div className="flex w-full flex-col gap-2 p-2">
       {entity.attributes.map(v => {
         if (v.type === "string[]") {
           return (

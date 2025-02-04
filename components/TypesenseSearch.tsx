@@ -9,7 +9,7 @@ export default function TypesenseSearch() {
   const [books, setBooks] = useState<Book[]>([])
 
   return (
-    <div className="flex flex-col  justify-center items-center gap-y-3 border-accent border py-10 overflow-y-auto max-h-[100%]">
+    <div className="flex min-w-[33%] flex-col justify-center items-center gap-y-3 border-accent border py-10 overflow-y-auto max-h-[100%]">
       <SearchBar action={setBooks} />
       <TypesenseSearchResult books={books} />
     </div>
