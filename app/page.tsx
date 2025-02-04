@@ -6,6 +6,7 @@ export default async function Home() {
       <h1 className="text-primary font-extrabold tracking-wider text-3xl">Navigator</h1>
       <div className="flex flex-row justify-evenly w-2/3 items-center">
         <Link className="p-3 bg-secondary hover:bg-accent rounded-md" href="/search">Search-Demo</Link>
+        <Link className="p-3 bg-secondary hover:bg-accent rounded-md" href="/create/entity">Entity-Creation-Demo</Link>
       </div>
     </div>
   )
