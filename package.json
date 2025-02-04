@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.26.7",
+    "@heroui/select": "^2.4.10",
+    "@heroui/system": "^2.4.7",
+    "@heroui/theme": "^2.4.6",
     "algoliasearch": "^5.20.0",
+    "framer-motion": "^12.0.11",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

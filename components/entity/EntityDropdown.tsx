@@ -1,5 +1,6 @@
 import { Entity } from "@/types/entity";
-import { useEffect, useState } from "react";
+import { Select, SelectItem } from "@heroui/select";
+import { ChangeEvent, useEffect, useState } from "react";
 
 export default function EntityDropdown({ callback }: { callback: (selectedEntity: Entity) => void }) {
   const [entitys, setEntitys] = useState<Entity[]>([])
@@ -12,13 +13,15 @@ export default function EntityDropdown({ callback }: { callback: (selectedEntity
     }
 
     initEntitys()
-  }, [entitys])
+  }, [])
+
+  function change(e: ChangeEvent<HTMLSelectElement>) {
+
+  }
 
   return (
-    <select>
-      {entitys.map(v => {
-        return <option key={v.name}>{v.name}</option>
-      })}
-    </select>
+    <Select className="max-w-xs" items={entitys} label="Your Entity" placeholder="Select an Entity">
+      {(entity) => <SelectItem key={entity.name}>{entity.name}</SelectItem>}
+    </Select>
   )
 }
