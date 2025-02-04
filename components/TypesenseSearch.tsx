@@ -1,21 +1,19 @@
-import { Book } from "@/types/book";
-import TypesenseInstance from "@/utils/TypesenseInstance";
-import { SearchParams } from "typesense/lib/Typesense/Documents";
-import BookElement from "./BookElement";
+"use client"
+
+import { Book } from "@/types/book"
+import TypesenseSearchResult from "./TypesenseSearchResult"
+import SearchBar from "./SearchBar"
+import { useState } from "react"
 
 export default async function TypesenseSearch() {
-  const searchParams: SearchParams = {
-    q: 'Harry Potter',
-    query_by: 'title',
-    sort_by: 'publication_year:desc'
-  }
+  const [books, setBooks] = useState<Book[]>([])
 
-  const request = (await TypesenseInstance.searchData('books', searchParams)).hits!;
-  const books = request.map((res) => res.document as Book);
+
 
   return (
     <div className="flex justify-evenly flex-wrap gap-y-3 items-stretch border-accent border py-10 overflow-y-auto max-h-[100%]">
-      {books.map((book) => (BookElement({ book: book })))}
-    </div >
+      <SearchBar action={setBooks} />
+      <TypesenseSearchResult books={books} />
+    </div>
   )
 }
