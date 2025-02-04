@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.26.7",
+    "@heroui/input": "^2.4.10",
     "@heroui/select": "^2.4.10",
     "@heroui/system": "^2.4.7",
     "@heroui/theme": "^2.4.6",
