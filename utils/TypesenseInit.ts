@@ -1,24 +1,17 @@
 "use server"
 
-import { SearchParams } from "typesense/lib/Typesense/Documents";
-import { Book } from "@/types/book";
 import { CollectionCreateSchema } from "typesense/lib/Typesense/Collections";
 import { readFile } from 'fs/promises'
-import { createCollection, importData, searchData } from "./TypesenseInstance";
+import { createCollection, getTypesenseClient, importData } from "./TypesenseInstance";
 
 export async function initIfEmpty() {
-  const searchParams: SearchParams = {
-    q: "harry",
-    query_by: 'title',
-    sort_by: 'publication_year:desc',
-    limit: 250
-  }
 
-  const request = (await searchData('books', searchParams)).hits!;
-  const books = request.map((res) => res.document as Book);
+  const res = await (await getTypesenseClient()).collections().retrieve();
 
-  if (books.length === 0) {
-    await init();
+  const bookCollection = res.find((v) => v.name === "books")
+
+  if (!bookCollection) {
+    await init()
   }
 }
 
@@ -28,7 +21,6 @@ async function init() {
     fields: [
       { 'name': 'title', 'type': 'string' },
       { 'name': 'authors', 'type': 'string[]', 'facet': true },
-
       { 'name': 'publication_year', 'type': 'int32', 'facet': true },
       { 'name': 'ratings_count', 'type': 'int32' },
       { 'name': 'average_rating', 'type': 'float' }
@@ -37,6 +29,8 @@ async function init() {
   }
 
   const books = await readFile(process.cwd() + '/data/books.jsonl', 'utf8')
+
+  console.log("reseting DB")
 
   createCollection(bookSchema)
   importData(books)

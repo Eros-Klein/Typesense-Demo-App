@@ -4,4 +4,5 @@ export type Book = {
   publication_year: number;
   ratings_count: number;
   average_rating: number;
+  id: number;
 }

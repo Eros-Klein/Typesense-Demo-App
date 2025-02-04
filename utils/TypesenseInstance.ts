@@ -21,8 +21,11 @@ export async function getTypesenseClient() {
 export async function createCollection(type: CollectionCreateSchema) {
   await client.collections().create(type)
 }
-export async function importData(data: string) {
-  await client.collections('books').documents().import(data)
+export async function importData(data: string, schema?: string) {
+  await client.collections(schema ? schema : "books").documents().import(data)
+}
+export async function createDocument(data: any, schema: string) {
+  await client.collections(schema).documents().create(data)
 }
 export async function searchData(collection: string, query: SearchParams) {
   return await client.collections(collection).documents().search(query)

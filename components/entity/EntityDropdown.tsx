@@ -1,8 +1,7 @@
 import { Entity } from "@/types/entity";
 import { Select, SelectItem } from "@heroui/select";
 import { SharedSelection } from "@heroui/system";
-import { ChangeEvent, useEffect, useState } from "react";
-import { Key } from "readline";
+import { useEffect, useState } from "react";
 
 export default function EntityDropdown({ callback }: { callback: (selectedEntity?: Entity) => void }) {
   const [entitys, setEntitys] = useState<Entity[]>([])
