@@ -2,15 +2,19 @@
 
 import { Book } from "@/types/book";
 
-export default async function SearchBar({ action }: { action: (boos: Book[]) => void }) {
+export default function SearchBar({ action }: { action: (boos: Book[]) => void }) {
+  async function updateSearchVal(val: React.ChangeEvent<HTMLInputElement>) {
+    const queryString = val.target.value === "" ? "" : `?q=${val.target.value}`;
 
+    const res = await fetch(`/api/search${queryString}`)
 
-  function updateSearchVal(val: React.ChangeEvent<HTMLInputElement>) {
-    fetch(`/api/search?q=${val.target.value}`).then((res) => res.json().then((data) => action(data as Book[])));
+    const books: Book[] = await res.json()
+
+    action(books)
   }
 
   return (
-    <input onChange={updateSearchVal} />
+    <input className="p-2 w-1/2 outline-none rounded-2xl bg-secondary hover:bg-accent" onChange={updateSearchVal} />
   )
 }
 
