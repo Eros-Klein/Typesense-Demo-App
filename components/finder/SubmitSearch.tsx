@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { FieldType } from "typesense/lib/Typesense/Collection";
 import { SearchResponse } from "typesense/lib/Typesense/Documents";
 import ResultHeader from "./ResultHeader";
+import ResultContents from "./ResultContents";
 
 export default function SubmitSearch({ collection, attribute, value }: { collection?: Entity, attribute?: { name: string, type: FieldType }, value?: any }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -66,8 +67,10 @@ export default function SubmitSearch({ collection, attribute, value }: { collect
               <ModalHeader className="flex flex-col gap-2">Search Results</ModalHeader>
               <ModalBody>
                 {!collection || !attribute || !value || !results ? <div className="flex flex-col justify-center items-center h-full font-bold text-xl">{processMissingValResponse()}</div> : (
-                  <div className="flex flex-col gap-2 justify-start items-center w-full">
+                  <div className="flex flex-col gap-2 justify-start items-center w-full overflow-hidden">
                     <ResultHeader searchResults={results} />
+                    <span className="h-0.5 w-2/3 bg-secondary rounded-full" />
+                    <ResultContents headerVal={attribute.name} searchResults={results} />
                   </div>
                 )}
               </ModalBody>
