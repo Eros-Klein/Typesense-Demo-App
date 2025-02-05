@@ -8,7 +8,7 @@ type Attribute = {
   dataType: string
 }
 
-export default function AttributeList() {
+export default function AttributeList({ callback }: { callback: (jsonString: string) => void }) {
   const [counter, setCounter] = useState<number>(1)
   const [attributes, setAttributes] = useState<Attribute[]>([])
 
@@ -36,11 +36,27 @@ export default function AttributeList() {
 
     setAttributes(oldAttributes)
 
-    console.log(attributes)
+    callback(toJsonString())
+  }
+
+  const toJsonString = () => {
+    let jsonString = "["
+
+    const arr: string[] = []
+
+    attributes.forEach(a => {
+      const newString = `{ "name": "${a.name}", "type": "${a.dataType}" }`
+
+      arr.push(newString)
+    })
+
+    jsonString += arr.join(", ")
+
+    return jsonString + "]"
   }
 
   return (
-    <div className="flex flex-col justify-evenly gap-2 items-center w-2/3">
+    <div className="flex flex-col justify-evenly gap-2 items-center w-full">
       {Array.from({ length: counter }).map((_, idx) => (
         <Attribute callback={(n, d) => upsertAttribute(idx, n, d)} key={idx} />
       ))}

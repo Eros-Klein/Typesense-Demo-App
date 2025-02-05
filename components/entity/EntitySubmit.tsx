@@ -18,6 +18,8 @@ export default function EntitySubmit({ entity, schema }: { entity: string, schem
       body: JSON.stringify(body)
     })
 
+    console.log(JSON.stringify(body))
+
     if (res.status === 200) {
       setStatus("success");
     }

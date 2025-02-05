@@ -9,6 +9,7 @@ export default function Attribute({ callback }: { callback: (name: string, dataT
   useEffect(() => {
     if (name !== "" && dataType !== undefined) {
       callback(name, dataType)
+      console.log(dataType)
     }
   }, [dataType, name])
 
