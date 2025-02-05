@@ -38,4 +38,6 @@ export async function searchDataEasy(collection: string, query: string, queryFie
     limit: 250
   }
 
+  return (await searchData(collection, searchParams))
+
 }
