@@ -31,11 +31,11 @@ export async function createDocument(data: any, schema: string) {
 export async function searchData(collection: string, query: SearchParams) {
   return await client.collections(collection).documents().search(query)
 }
-export async function searchDataEasy(collection: string, query: string) {
+export async function searchDataEasy(collection: string, query: string, queryField: string) {
   const searchParams: SearchParams = {
     q: query,
+    query_by: queryField,
     limit: 250
   }
 
-  searchData(collection, searchParams)
 }

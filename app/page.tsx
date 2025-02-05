@@ -8,6 +8,7 @@ export default async function Home() {
         <Link className="p-3 bg-secondary hover:bg-accent text-center flex-1 rounded-md" href="/search">Search-Demo</Link>
         <Link className="p-3 bg-secondary hover:bg-accent text-center flex-1 rounded-md" href="/create/entity">Entity-Creation-Demo</Link>
         <Link className="p-3 bg-secondary hover:bg-accent text-center flex-1 rounded-md" href="/create/type">Schema-Creation-Demo</Link>
+        <Link className="p-3 bg-secondary hover:bg-accent text-center flex-1 rounded-md" href="/search/specific">Find-Demo</Link>
       </div>
     </div>
   )
