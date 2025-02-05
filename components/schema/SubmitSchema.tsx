@@ -16,8 +16,6 @@ export default function SubmitSchema({ name, attributes }: { name: string, attri
       body: JSON.stringify(body)
     })
 
-    console.log(JSON.stringify(body))
-
     if (res.status === 200) {
       setStatus("success")
     }
