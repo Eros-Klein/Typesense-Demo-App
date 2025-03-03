@@ -39,5 +39,10 @@ export async function searchDataEasy(collection: string, query: string, queryFie
   }
 
   return (await searchData(collection, searchParams))
+}
 
+export async function deleteDocument(collection: string, id: string) {
+  await client.collections(collection).documents().delete({
+    filter_by: `id := ${id}`
+  })
 }

@@ -1,10 +1,15 @@
 import { getEntitys } from "@/utils/EntityManager";
-import { createDocument } from "@/utils/TypesenseInstance";
+import { createDocument, deleteDocument } from "@/utils/TypesenseInstance";
 import { NextResponse } from "next/server";
 
 type CreationRequest = {
   schema: string,
   data: any
+}
+
+type DeletionRequest = {
+  collection: string,
+  id: string
 }
 
 export async function GET(req: Request) {
@@ -26,6 +31,16 @@ export async function POST(req: Request) {
   console.log(body.data)
 
   await createDocument(body.data, body.schema)
+
+  return NextResponse.json("")
+}
+
+export async function DELETE(req: Request) {
+  const body: DeletionRequest = await req.json();
+
+  console.log(body)
+
+  await deleteDocument(body.collection, body.id)
 
   return NextResponse.json("")
 }

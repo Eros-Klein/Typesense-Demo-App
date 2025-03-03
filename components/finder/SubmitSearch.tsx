@@ -70,7 +70,7 @@ export default function SubmitSearch({ collection, attribute, value }: { collect
                   <div className="flex flex-col gap-2 justify-start items-center w-full overflow-hidden">
                     <ResultHeader searchResults={results} />
                     <span className="h-0.5 w-2/3 bg-secondary rounded-full" />
-                    <ResultContents headerVal={attribute.name} searchResults={results} />
+                    <ResultContents collection={collection.name} headerVal={attribute.name} searchResults={results} />
                   </div>
                 )}
               </ModalBody>

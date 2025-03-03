@@ -30,8 +30,6 @@ async function init() {
 
   const books = await readFile(process.cwd() + '/data/books.jsonl', 'utf8')
 
-  console.log("reseting DB")
-
   createCollection(bookSchema)
   importData(books)
 }
