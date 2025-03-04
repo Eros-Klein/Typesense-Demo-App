@@ -30,5 +30,5 @@ npm install
 - Run via npm start or dev for development
 
 ```sh
-npm run start
+npm run dev
 ```
